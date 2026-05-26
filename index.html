@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jongwon Lim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --purple: #6B5FD4;
+      --purple-light: #EEEDFe;
+      --text-primary: #1a1a1a;
+      --text-secondary: #555;
+      --text-muted: #888;
+      --bg: #ffffff;
+      --bg-secondary: #f7f6f4;
+      --border: rgba(0,0,0,0.1);
+      --border-strong: rgba(0,0,0,0.2);
+    }
+    [data-theme="dark"] {
+      --text-primary: #f0ede8;
+      --text-secondary: #b0a898;
+      --text-muted: #6e6860;
+      --bg: #18161400;
+      --bg-secondary: #1f1d1a;
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.15);
+      --purple: #9d93e8;
+      --purple-light: #2a2550;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--text-primary);
+      background: var(--bg);
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.7;
+    }
+    a { color: var(--purple); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 2.5rem;
+      height: 52px;
+    }
+    .nav-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      color: var(--text-primary);
+      letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; gap: 1.8rem; align-items: center; }
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--purple);
+      border-bottom-color: var(--purple);
+    }
+    .theme-toggle {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 0.5px solid var(--border-strong);
+      background: transparent;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      transition: background 0.2s;
+      color: var(--text-secondary);
+    }
+    .theme-toggle:hover { background: var(--bg-secondary); }
+
+    /* PAGE SECTIONS */
+    .page { display: none; max-width: 800px; margin: 0 auto; padding: 0 2rem 5rem; }
+    .page.active { display: block; }
+
+    /* HOME */
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+    }
+    .hero-photo {
+      width: 175px; height: 175px;
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      overflow: hidden;
+      border: 0.5px solid var(--border);
+      background: var(--bg-secondary);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: 34px; font-weight: 400;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+    .hero-bio {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-bio p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .hero-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2.2rem;
+    }
+    .hero-links a {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 7px 18px;
+      border: 0.5px solid var(--border-strong);
+      border-radius: 24px;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .hero-links a:hover {
+      color: var(--purple);
+      border-color: var(--purple);
+      background: var(--purple-light);
+    }
+
+    /* DIVIDER */
+    hr { border: none; border-top: 0.5px solid var(--border); margin: 0; }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: var(--bg-secondary);
+      text-align: center;
+      padding: 2.5rem 1.5rem 2rem;
+      margin: 0 -2rem 3rem;
+    }
+    .page-header h2 {
+      font-family: 'EB Garamond', serif;
+      font-size: 28px; font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+    }
+    .page-header-line {
+      width: 36px; height: 2px;
+      background: var(--purple);
+      margin: 0 auto;
+    }
+    .page-header p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 0.6rem;
+    }
+
+    /* SECTION */
+    .section { margin-bottom: 3rem; }
+    .section-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 22px; font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .section-line {
+      width: 28px; height: 2px;
+      background: var(--purple);
+      margin-bottom: 1.8rem;
+    }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 5px; top: 8px; bottom: 8px;
+      width: 1px; background: var(--border-strong);
+    }
+    .tl-item { position: relative; margin-bottom: 1.6rem; }
+    .tl-dot {
+      position: absolute; left: -2rem; top: 7px;
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      border: 1.5px solid var(--purple);
+      background: var(--bg);
+    }
+    .tl-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+    }
+    .tl-card h4 { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 2px; }
+    .tl-card .tl-role { font-size: 13px; font-style: italic; color: var(--text-secondary); margin-bottom: 3px; }
+    .tl-card .tl-period { font-size: 12px; color: var(--purple); margin-bottom: 0.5rem; }
+    .tl-card .tl-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+    .tl-card ul { margin: 0.4rem 0 0 1rem; }
+    .tl-card ul li { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 3px; }
+
+    /* RESEARCH */
+    .research-item {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 0.5px solid var(--border);
+      align-items: start;
+    }
+    .research-item:last-child { border-bottom: none; }
+    .research-item.flip { grid-template-columns: 1fr 190px; }
+    .research-item.flip .r-img { order: 2; }
+    .research-item.flip .r-content { order: 1; }
+    .r-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      border: 0.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      font-size: 36px; color: var(--border-strong);
+    }
+    .r-content h3 {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px; font-weight: 400;
+      color: var(--purple);
+      margin-bottom: 0.3rem;
+      line-height: 1.4;
+    }
+    .r-meta { font-size: 12px; color: var(--purple); margin-bottom: 0.7rem; opacity: 0.85; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.8rem; }
+    .tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border: 0.5px solid var(--border-strong);
+      border-radius: 20px;
+      color: var(--text-secondary);
+    }
+    .r-content p { font-size: 13px; line-height: 1.75; color: var(--text-secondary); margin-bottom: 0.8rem; }
+    .pub-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pub-link {
+      font-size: 12px;
+      padding: 4px 12px;
+      border: 0.5px solid var(--border-strong);
+      border-radius: 20px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .pub-link:hover { color: var(--purple); border-color: var(--purple); text-decoration: none; }
+
+    /* PUBLICATIONS */
+    .pub-item {
+      padding: 1.2rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-title { font-size: 14px; font-weight: 500; color: var(--text-primary); line-height: 1.5; margin-bottom: 4px; }
+    .pub-authors { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+    .pub-authors strong { color: var(--text-primary); }
+    .pub-journal-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .pub-year-badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: var(--purple-light);
+      color: var(--purple);
+      font-weight: 500;
+    }
+    .pub-journal { font-size: 12px; color: var(--text-muted); font-style: italic; }
+
+    /* AWARDS */
+    .award-item {
+      display: flex;
+      gap: 1.2rem;
+      padding: 0.9rem 0;
+      border-bottom: 0.5px solid var(--border);
+      align-items: start;
+    }
+    .award-item:last-child { border-bottom: none; }
+    .award-year { font-size: 12px; color: var(--purple); min-width: 45px; padding-top: 2px; font-weight: 500; }
+    .award-name { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 2px; }
+    .award-org { font-size: 12px; color: var(--text-muted); }
+
+    /* CONTACT */
+    .contact-wrap { max-width: 480px; }
+    .contact-wrap p { font-size: 15px; color: var(--text-secondary); margin-bottom: 1.8rem; line-height: 1.8; }
+    .contact-links { display: flex; flex-direction: column; gap: 12px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.8rem 1rem;
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .contact-link:hover {
+      border-color: var(--purple);
+      color: var(--purple);
+      background: var(--purple-light);
+      text-decoration: none;
+    }
+    .contact-icon { font-size: 18px; width: 24px; text-align: center; }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 0.5px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 10px; letter-spacing: 0.07em; }
+      .page { padding: 0 1rem 4rem; }
+      .hero { padding: 2.5rem 0.5rem 2rem; }
+      .research-item, .research-item.flip {
+        grid-template-columns: 1fr;
+      }
+      .research-item.flip .r-img { order: 0; }
+      .research-item.flip .r-content { order: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Jongwon Lim</span>
+  <div class="nav-links">
+    <a href="#" class="active" onclick="showPage('home',this)">Home</a>
+    <a href="#" onclick="showPage('resume',this)">Resume</a>
+    <a href="#" onclick="showPage('research',this)">Research</a>
+    <a href="#" onclick="showPage('publications',this)">Publications</a>
+    <a href="#" onclick="showPage('contact',this)">Contact</a>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">☽</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page active">
+  <div class="hero">
+    <div class="hero-photo">
+      <img src="https://jongwonlim.com/wp-content/uploads/2024/02/picture3aaasdsad.png" alt="Jongwon Lim" />
+    </div>
+    <h1>안녕하세요!</h1>
+    <div class="hero-bio">
+      <p>I'm Jongwon, a bioengineering researcher developing point-of-care molecular diagnostic platforms for infectious disease detection, with a focus on blood drying techniques and CRISPR-based assays.</p>
+      <p>I am a Postdoctoral Associate in the <a href="https://www.sabetilab.org/">Sabeti Lab</a> at the Broad Institute of MIT and Harvard. Prior to joining the Broad, I was a Professor Joe Greene Postdoctoral Fellow in the <a href="https://libna.mntl.illinois.edu/">Bashir Lab</a> at the University of Illinois Urbana-Champaign.</p>
+      <p>My research focuses on diagnostics for respiratory viruses (SARS-CoV-2, Influenza, RSV) and bloodstream infections (Sepsis, Hepatitis B). I developed a biphasic blood drying method enabling purification-free pathogen detection, and an amplification-free OR-gated CRISPR-Cascade assay achieving attomolar sensitivity.</p>
+      <p>Outside the lab, I enjoy spending time with my family — my wife and our son.</p>
+    </div>
+    <div class="hero-links">
+      <a href="mailto:jongwon6@illinois.edu">✉ Email</a>
+      <a href="https://scholar.google.com/citations?user=1zvHlaAAAAAJ" target="_blank">Scholar</a>
+      <a href="https://www.linkedin.com/in/jongwon-lim-3518251b7/" target="_blank">LinkedIn</a>
+      <a href="https://jongwonlim.com/useful-info/" target="_blank">CV</a>
+    </div>
+  </div>
+</div>
+
+<!-- RESUME -->
+<div id="resume" class="page">
+  <div class="page-header">
+    <h2>Resume</h2>
+    <div class="page-header-line"></div>
+    <p>Postdoctoral Associate · Sabeti Lab, Broad Institute of MIT and Harvard</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="section-line"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <h4>University of Illinois Urbana-Champaign</h4>
+          <div class="tl-role">Ph.D. in Bioengineering</div>
+          <div class="tl-period">Aug 2019 – Nov 2024</div>
+          <div class="tl-desc">Advisor: Prof. Rashid Bashir, Dean of The Grainger College of Engineering. Research on biphasic blood drying diagnostics and CRISPR-based pathogen detection.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <h4>Yonsei University, Seoul, South Korea</h4>
+          <div class="tl-role">M.S. in Biomedical Engineering</div>
+          <div class="tl-period">2017 – 2020</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <h4>Yonsei University, Seoul, South Korea</h4>
+          <div class="tl-role">B.S. in Biomedical Engineering</div>
+          <div class="tl-period">2013 – 2017</div>
+          <div class="tl-desc">Exchange student at University of Akron, USA (2015). Served as KATUSA (Korean Augmentation to the US Army), 2013–2014.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Experience</div>
+    <div class="section-line"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <h4>Broad Institute of MIT and Harvard</h4>
+          <div class="tl-role">Postdoctoral Associate — Sabeti Lab</div>
+          <div class="tl-period">2025 – Present</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <h4>University of Illinois Urbana-Champaign</h4>
+          <div class="tl-role">Professor Joe Greene Postdoctoral Fellow — Bashir Lab</div>
+          <div class="tl-period">Nov 2024 – 2025</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <h4>University of Illinois Urbana-Champaign</h4>
+          <div class="tl-role">Graduate Research Assistant — Bashir Lab</div>
+          <div class="tl-period">Aug 2019 – Nov 2024</div>
+          <ul>
+            <li>Developed biphasic dried blood diagnostics for HBV, sepsis, and respiratory viruses</li>
+            <li>Built amplification-free CRISPR-Cascade assay published in PNAS (2025)</li>
+            <li>Developed smartphone-based point-of-care diagnostic platform for SARS-CoV-2</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Awards &amp; Recognition</div>
+    <div class="section-line"></div>
+    <div class="award-item">
+      <span class="award-year">2024</span>
+      <div>
+        <div class="award-name">Rising Stars in Materials Science and Engineering</div>
+        <div class="award-org">Stanford · MIT · Carnegie Mellon · UIUC — Only UIUC graduate student selected</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2023</span>
+      <div>
+        <div class="award-name">SLAS Innovation Award</div>
+        <div class="award-org">Society for Laboratory Automation and Screening</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2022</span>
+      <div>
+        <div class="award-name">Baxter International Award</div>
+        <div class="award-org">Baxter International Inc.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Teaching</div>
+    <div class="section-line"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <h4>BIOE 202 — Cell &amp; Tissue Engineering Lab</h4>
+          <div class="tl-role">Teaching Assistant, PhD</div>
+          <div class="tl-period">UIUC</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <h4>Bio-MEMS, Biosensors, Engineering Mathematics</h4>
+          <div class="tl-role">Teaching Assistant, Master's</div>
+          <div class="tl-period">Yonsei University</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div id="research" class="page">
+  <div class="page-header">
+    <h2>Research</h2>
+    <div class="page-header-line"></div>
+  </div>
+
+  <div class="research-item">
+    <div class="r-img">🧬</div>
+    <div class="r-content">
+      <h3>Amplification-free CRISPR-Cascade for blood pathogen detection</h3>
+      <div class="r-meta">2022 – 2025 · Bashir Lab, UIUC</div>
+      <div class="tags">
+        <span class="tag">CRISPR</span><span class="tag">Diagnostics</span>
+        <span class="tag">Blood</span><span class="tag">OR-gate</span><span class="tag">Attomolar</span>
+      </div>
+      <p>Developed an amplification-free, OR-gated CRISPR-Cascade assay achieving attomolar sensitivity for multiplex pathogen detection directly from whole blood — eliminating the need for nucleic acid purification.</p>
+      <div class="pub-links">
+        <a class="pub-link" href="#">PNAS (2025)</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="research-item flip">
+    <div class="r-content">
+      <h3>Biphasic dried blood diagnostics for HBV and sepsis</h3>
+      <div class="r-meta">2020 – 2024 · Bashir Lab, UIUC</div>
+      <div class="tags">
+        <span class="tag">Blood drying</span><span class="tag">HBV</span>
+        <span class="tag">Sepsis</span><span class="tag">LAMP</span><span class="tag">RPA</span>
+      </div>
+      <p>Developed a novel biphasic (solid + liquid phase) blood drying method enabling inhibitor inactivation and DNA amplification simultaneously without purification. Achieved 10 IU mL⁻¹ LOD for Hepatitis B Virus within 1.5 hours.</p>
+      <div class="pub-links">
+        <a class="pub-link" href="#">Biosensors &amp; Bioelectronics (2023)</a>
+      </div>
+    </div>
+    <div class="r-img">💧</div>
+  </div>
+
+  <div class="research-item">
+    <div class="r-img">📱</div>
+    <div class="r-content">
+      <h3>Smartphone-based point-of-care diagnostic platform</h3>
+      <div class="r-meta">2020 – 2022 · Bashir Lab, UIUC</div>
+      <div class="tags">
+        <span class="tag">Smartphone</span><span class="tag">SARS-CoV-2</span>
+        <span class="tag">Fluorescence</span><span class="tag">Point-of-care</span>
+      </div>
+      <p>Built a smartphone-integrated diagnostic device with temperature control, fluorescence reading, and contamination-free cartridges for SARS-CoV-2 variant identification at the point of care.</p>
+      <div class="pub-links">
+        <a class="pub-link" href="#">Lab on a Chip (2022)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PUBLICATIONS -->
+<div id="publications" class="page">
+  <div class="page-header">
+    <h2>Publications</h2>
+    <div class="page-header-line"></div>
+  </div>
+
+  <div class="section">
+    <div class="pub-item">
+      <div class="pub-title">Amplification-free, OR-gated CRISPR-Cascade reaction for pathogen detection in blood samples</div>
+      <div class="pub-authors"><strong>Jongwon Lim</strong>, et al.</div>
+      <div class="pub-journal-row">
+        <span class="pub-year-badge">2025</span>
+        <span class="pub-journal">Proceedings of the National Academy of Sciences (PNAS)</span>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-title">Novel drying process coupled with thermal treatment for Hepatitis B Virus diagnostics with 10 IU mL⁻¹ limit of detection within 1.5 hours</div>
+      <div class="pub-authors"><strong>Jongwon Lim</strong>, et al.</div>
+      <div class="pub-journal-row">
+        <span class="pub-year-badge">2023</span>
+        <span class="pub-journal">Biosensors and Bioelectronics</span>
+      </div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-title">Smartphone-based diagnostic platform integrating temperature control, fluorescence reading, and SARS-CoV-2 variant identification</div>
+      <div class="pub-authors"><strong>Jongwon Lim</strong>, et al.</div>
+      <div class="pub-journal-row">
+        <span class="pub-year-badge">2022</span>
+        <span class="pub-journal">Lab on a Chip</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+  <div class="page-header">
+    <h2>Contact</h2>
+    <div class="page-header-line"></div>
+  </div>
+  <div class="contact-wrap">
+    <p>Feel free to reach out about research collaborations, diagnostic platform development, or academic opportunities. I am always happy to connect with fellow researchers and students.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:jongwon6@illinois.edu">
+        <span class="contact-icon">✉</span> jongwon6@illinois.edu
+      </a>
+      <a class="contact-link" href="https://scholar.google.com/citations?user=1zvHlaAAAAAJ" target="_blank">
+        <span class="contact-icon">🎓</span> Google Scholar
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/jongwon-lim-3518251b7/" target="_blank">
+        <span class="contact-icon">💼</span> LinkedIn
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">© 2026 Jongwon Lim · Broad Institute of MIT and Harvard</div>
+
+<script>
+  function showPage(id, el) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if (el) el.classList.add('active');
+    window.scrollTo(0, 0);
+    return false;
+  }
+
+  function toggleTheme() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+    document.querySelector('.theme-toggle').textContent = isDark ? '☽' : '☀';
+  }
+</script>
+</body>
+</html>
