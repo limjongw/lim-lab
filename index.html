@@ -10,7 +10,7 @@
   <style>
     :root {
       --purple: #6B5FD4;
-      --purple-light: #EEEDFe;
+      --purple-light: #EEEDFE;
       --text-primary: #1a1a1a;
       --text-secondary: #555;
       --text-muted: #888;
@@ -23,7 +23,7 @@
       --text-primary: #f0ede8;
       --text-secondary: #b0a898;
       --text-muted: #6e6860;
-      --bg: #18161400;
+      --bg: #181614;
       --bg-secondary: #1f1d1a;
       --border: rgba(255,255,255,0.08);
       --border-strong: rgba(255,255,255,0.15);
@@ -31,315 +31,116 @@
       --purple-light: #2a2550;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      color: var(--text-primary);
-      background: var(--bg);
-      transition: background 0.3s, color 0.3s;
-      line-height: 1.7;
-    }
+    body { font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--text-primary); background: var(--bg); transition: background 0.3s, color 0.3s; line-height: 1.7; }
     a { color: var(--purple); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100;
       background: var(--bg);
       border-bottom: 0.5px solid var(--border);
       display: flex; justify-content: space-between; align-items: center;
-      padding: 0 2.5rem;
-      height: 52px;
+      padding: 0 2.5rem; height: 52px;
     }
-    .nav-name {
-      font-family: 'EB Garamond', serif;
-      font-size: 18px;
-      color: var(--text-primary);
-      letter-spacing: 0.01em;
-    }
+    .nav-name { font-family: 'EB Garamond', serif; font-size: 18px; color: var(--text-primary); letter-spacing: 0.01em; }
     .nav-links { display: flex; gap: 1.8rem; align-items: center; }
-    .nav-links a {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      text-decoration: none;
-      padding-bottom: 2px;
-      border-bottom: 1.5px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--purple);
-      border-bottom-color: var(--purple);
-    }
-    .theme-toggle {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      border: 0.5px solid var(--border-strong);
-      background: transparent;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px;
-      transition: background 0.2s;
-      color: var(--text-secondary);
-    }
+    .nav-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; padding-bottom: 2px; border-bottom: 1.5px solid transparent; transition: color 0.2s, border-color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--purple); border-bottom-color: var(--purple); }
+    .theme-toggle { width: 32px; height: 32px; border-radius: 50%; border: 0.5px solid var(--border-strong); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: background 0.2s; color: var(--text-secondary); }
     .theme-toggle:hover { background: var(--bg-secondary); }
 
-    /* PAGE SECTIONS */
     .page { display: none; max-width: 800px; margin: 0 auto; padding: 0 2rem 5rem; }
     .page.active { display: block; }
 
-    /* HOME */
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem 3rem;
-    }
-    .hero-photo {
-      width: 175px; height: 175px;
-      border-radius: 50%;
-      margin: 0 auto 2rem;
-      overflow: hidden;
-      border: 0.5px solid var(--border);
-      background: var(--bg-secondary);
-    }
+    .hero { text-align: center; padding: 4rem 2rem 3rem; }
+    .hero-photo { width: 175px; height: 175px; border-radius: 50%; margin: 0 auto 2rem; overflow: hidden; border: 0.5px solid var(--border); background: var(--bg-secondary); }
     .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .hero h1 {
-      font-family: 'EB Garamond', serif;
-      font-size: 34px; font-weight: 400;
-      margin-bottom: 2rem;
-      color: var(--text-primary);
-    }
-    .hero-bio {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .hero-bio p {
-      font-size: 15px;
-      line-height: 1.85;
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-    }
-    .hero-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 2.2rem;
-    }
-    .hero-links a {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      padding: 7px 18px;
-      border: 0.5px solid var(--border-strong);
-      border-radius: 24px;
-      text-decoration: none;
-      transition: color 0.2s, border-color 0.2s, background 0.2s;
-    }
-    .hero-links a:hover {
-      color: var(--purple);
-      border-color: var(--purple);
-      background: var(--purple-light);
-    }
+    .hero h1 { font-family: 'EB Garamond', serif; font-size: 34px; font-weight: 400; margin-bottom: 2rem; color: var(--text-primary); }
+    .hero-bio { max-width: 620px; margin: 0 auto; text-align: center; }
+    .hero-bio p { font-size: 15px; line-height: 1.85; color: var(--text-secondary); margin-bottom: 1rem; }
+    .hero-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 2.2rem; }
+    .hero-links a { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary); padding: 7px 18px; border: 0.5px solid var(--border-strong); border-radius: 24px; text-decoration: none; transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .hero-links a:hover { color: var(--purple); border-color: var(--purple); background: var(--purple-light); }
 
-    /* DIVIDER */
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 620px; margin: 2.5rem auto 0; }
+    .stat-card { background: var(--bg-secondary); border-radius: 8px; padding: 1rem 0.5rem; text-align: center; }
+    .stat-num { font-family: 'EB Garamond', serif; font-size: 26px; font-weight: 400; color: var(--purple); display: block; }
+    .stat-label { font-size: 11px; color: var(--text-muted); letter-spacing: 0.04em; margin-top: 2px; display: block; }
+
     hr { border: none; border-top: 0.5px solid var(--border); margin: 0; }
 
-    /* PAGE HEADER */
-    .page-header {
-      background: var(--bg-secondary);
-      text-align: center;
-      padding: 2.5rem 1.5rem 2rem;
-      margin: 0 -2rem 3rem;
-    }
-    .page-header h2 {
-      font-family: 'EB Garamond', serif;
-      font-size: 28px; font-weight: 400;
-      color: var(--text-primary);
-      margin-bottom: 0.6rem;
-    }
-    .page-header-line {
-      width: 36px; height: 2px;
-      background: var(--purple);
-      margin: 0 auto;
-    }
-    .page-header p {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 0.6rem;
-    }
+    .page-header { background: var(--bg-secondary); text-align: center; padding: 2.5rem 1.5rem 2rem; margin: 0 -2rem 3rem; }
+    .page-header h2 { font-family: 'EB Garamond', serif; font-size: 28px; font-weight: 400; color: var(--text-primary); margin-bottom: 0.6rem; }
+    .page-header-line { width: 36px; height: 2px; background: var(--purple); margin: 0 auto; }
+    .page-header p { font-size: 13px; color: var(--text-muted); margin-top: 0.6rem; }
 
-    /* SECTION */
     .section { margin-bottom: 3rem; }
-    .section-title {
-      font-family: 'EB Garamond', serif;
-      font-size: 22px; font-weight: 400;
-      color: var(--text-primary);
-      margin-bottom: 0.4rem;
-    }
-    .section-line {
-      width: 28px; height: 2px;
-      background: var(--purple);
-      margin-bottom: 1.8rem;
-    }
+    .section-title { font-family: 'EB Garamond', serif; font-size: 22px; font-weight: 400; color: var(--text-primary); margin-bottom: 0.4rem; }
+    .section-line { width: 28px; height: 2px; background: var(--purple); margin-bottom: 1.8rem; }
 
-    /* TIMELINE */
     .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before {
-      content: '';
-      position: absolute; left: 5px; top: 8px; bottom: 8px;
-      width: 1px; background: var(--border-strong);
-    }
+    .timeline::before { content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 1px; background: var(--border-strong); }
     .tl-item { position: relative; margin-bottom: 1.6rem; }
-    .tl-dot {
-      position: absolute; left: -2rem; top: 7px;
-      width: 11px; height: 11px;
-      border-radius: 50%;
-      border: 1.5px solid var(--purple);
-      background: var(--bg);
-    }
-    .tl-card {
-      background: var(--bg);
-      border: 0.5px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1.2rem;
-    }
+    .tl-dot { position: absolute; left: -2rem; top: 7px; width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--purple); background: var(--bg); }
+    .tl-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; }
     .tl-card h4 { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 2px; }
     .tl-card .tl-role { font-size: 13px; font-style: italic; color: var(--text-secondary); margin-bottom: 3px; }
     .tl-card .tl-period { font-size: 12px; color: var(--purple); margin-bottom: 0.5rem; }
     .tl-card .tl-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
-    .tl-card ul { margin: 0.4rem 0 0 1rem; }
-    .tl-card ul li { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 3px; }
+    .tl-card ul { margin: 0.5rem 0 0 1rem; }
+    .tl-card ul li { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 4px; }
+    .highlight-badge { display: inline-block; font-size: 11px; padding: 2px 8px; background: var(--purple-light); color: var(--purple); border-radius: 10px; margin-bottom: 4px; margin-right: 4px; }
 
-    /* RESEARCH */
-    .research-item {
-      display: grid;
-      grid-template-columns: 190px 1fr;
-      gap: 2rem;
-      padding: 2rem 0;
-      border-bottom: 0.5px solid var(--border);
-      align-items: start;
-    }
+    .research-item { display: grid; grid-template-columns: 190px 1fr; gap: 2rem; padding: 2rem 0; border-bottom: 0.5px solid var(--border); align-items: start; }
     .research-item:last-child { border-bottom: none; }
     .research-item.flip { grid-template-columns: 1fr 190px; }
     .research-item.flip .r-img { order: 2; }
     .research-item.flip .r-content { order: 1; }
-    .r-img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: var(--bg-secondary);
-      border-radius: 8px;
-      border: 0.5px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      font-size: 36px; color: var(--border-strong);
-    }
-    .r-content h3 {
-      font-family: 'EB Garamond', serif;
-      font-size: 18px; font-weight: 400;
-      color: var(--purple);
-      margin-bottom: 0.3rem;
-      line-height: 1.4;
-    }
+    .r-img { width: 100%; aspect-ratio: 4/3; background: var(--bg-secondary); border-radius: 8px; border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; overflow: hidden; font-size: 36px; color: var(--border-strong); }
+    .r-content h3 { font-family: 'EB Garamond', serif; font-size: 18px; font-weight: 400; color: var(--purple); margin-bottom: 0.3rem; line-height: 1.4; }
     .r-meta { font-size: 12px; color: var(--purple); margin-bottom: 0.7rem; opacity: 0.85; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.8rem; }
-    .tag {
-      font-size: 11px;
-      padding: 3px 10px;
-      border: 0.5px solid var(--border-strong);
-      border-radius: 20px;
-      color: var(--text-secondary);
-    }
+    .tag { font-size: 11px; padding: 3px 10px; border: 0.5px solid var(--border-strong); border-radius: 20px; color: var(--text-secondary); }
     .r-content p { font-size: 13px; line-height: 1.75; color: var(--text-secondary); margin-bottom: 0.8rem; }
     .pub-links { display: flex; flex-wrap: wrap; gap: 8px; }
-    .pub-link {
-      font-size: 12px;
-      padding: 4px 12px;
-      border: 0.5px solid var(--border-strong);
-      border-radius: 20px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s, border-color 0.2s;
-    }
+    .pub-link { font-size: 12px; padding: 4px 12px; border: 0.5px solid var(--border-strong); border-radius: 20px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, border-color 0.2s; }
     .pub-link:hover { color: var(--purple); border-color: var(--purple); text-decoration: none; }
 
-    /* PUBLICATIONS */
-    .pub-item {
-      padding: 1.2rem 0;
-      border-bottom: 0.5px solid var(--border);
-    }
+    .pub-item { padding: 1.2rem 0; border-bottom: 0.5px solid var(--border); }
     .pub-item:last-child { border-bottom: none; }
+    .pub-num { font-size: 12px; color: var(--text-muted); min-width: 24px; display: inline-block; }
     .pub-title { font-size: 14px; font-weight: 500; color: var(--text-primary); line-height: 1.5; margin-bottom: 4px; }
     .pub-authors { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
     .pub-authors strong { color: var(--text-primary); }
     .pub-journal-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .pub-year-badge {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 10px;
-      background: var(--purple-light);
-      color: var(--purple);
-      font-weight: 500;
-    }
+    .pub-year-badge { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: var(--purple-light); color: var(--purple); font-weight: 500; }
     .pub-journal { font-size: 12px; color: var(--text-muted); font-style: italic; }
 
-    /* AWARDS */
-    .award-item {
-      display: flex;
-      gap: 1.2rem;
-      padding: 0.9rem 0;
-      border-bottom: 0.5px solid var(--border);
-      align-items: start;
-    }
+    .award-item { display: flex; gap: 1.2rem; padding: 0.9rem 0; border-bottom: 0.5px solid var(--border); align-items: start; }
     .award-item:last-child { border-bottom: none; }
     .award-year { font-size: 12px; color: var(--purple); min-width: 45px; padding-top: 2px; font-weight: 500; }
     .award-name { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 2px; }
     .award-org { font-size: 12px; color: var(--text-muted); }
+    .award-detail { font-size: 11px; color: var(--purple); margin-top: 2px; }
 
-    /* CONTACT */
     .contact-wrap { max-width: 480px; }
     .contact-wrap p { font-size: 15px; color: var(--text-secondary); margin-bottom: 1.8rem; line-height: 1.8; }
     .contact-links { display: flex; flex-direction: column; gap: 12px; }
-    .contact-link {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 14px; color: var(--text-secondary);
-      text-decoration: none;
-      padding: 0.8rem 1rem;
-      border: 0.5px solid var(--border);
-      border-radius: 8px;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-    }
-    .contact-link:hover {
-      border-color: var(--purple);
-      color: var(--purple);
-      background: var(--purple-light);
-      text-decoration: none;
-    }
+    .contact-link { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-secondary); text-decoration: none; padding: 0.8rem 1rem; border: 0.5px solid var(--border); border-radius: 8px; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+    .contact-link:hover { border-color: var(--purple); color: var(--purple); background: var(--purple-light); text-decoration: none; }
     .contact-icon { font-size: 18px; width: 24px; text-align: center; }
 
-    /* FOOTER */
-    .footer {
-      text-align: center;
-      padding: 1.5rem 0;
-      font-size: 12px;
-      color: var(--text-muted);
-      border-top: 0.5px solid var(--border);
-      margin-top: 2rem;
-    }
+    .footer { text-align: center; padding: 1.5rem 0; font-size: 12px; color: var(--text-muted); border-top: 0.5px solid var(--border); margin-top: 2rem; }
 
     @media (max-width: 600px) {
       nav { padding: 0 1rem; }
-      .nav-links { gap: 1rem; }
-      .nav-links a { font-size: 10px; letter-spacing: 0.07em; }
+      .nav-links { gap: 0.8rem; }
+      .nav-links a { font-size: 10px; }
       .page { padding: 0 1rem 4rem; }
       .hero { padding: 2.5rem 0.5rem 2rem; }
-      .research-item, .research-item.flip {
-        grid-template-columns: 1fr;
-      }
-      .research-item.flip .r-img { order: 0; }
-      .research-item.flip .r-content { order: 0; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .research-item, .research-item.flip { grid-template-columns: 1fr; }
+      .research-item.flip .r-img, .research-item.flip .r-content { order: unset; }
     }
   </style>
 </head>
@@ -348,11 +149,11 @@
 <nav>
   <span class="nav-name">Jongwon Lim</span>
   <div class="nav-links">
-    <a href="#" class="active" onclick="showPage('home',this)">Home</a>
-    <a href="#" onclick="showPage('resume',this)">Resume</a>
-    <a href="#" onclick="showPage('research',this)">Research</a>
-    <a href="#" onclick="showPage('publications',this)">Publications</a>
-    <a href="#" onclick="showPage('contact',this)">Contact</a>
+    <a href="#" class="active" onclick="showPage('home',this);return false;">Home</a>
+    <a href="#" onclick="showPage('resume',this);return false;">Resume</a>
+    <a href="#" onclick="showPage('research',this);return false;">Research</a>
+    <a href="#" onclick="showPage('publications',this);return false;">Publications</a>
+    <a href="#" onclick="showPage('contact',this);return false;">Contact</a>
     <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">☽</button>
   </div>
 </nav>
@@ -366,15 +167,20 @@
     <h1>안녕하세요!</h1>
     <div class="hero-bio">
       <p>I'm Jongwon, a bioengineering researcher developing point-of-care molecular diagnostic platforms for infectious disease detection, with a focus on blood drying techniques and CRISPR-based assays.</p>
-      <p>I am a Postdoctoral Associate in the <a href="https://www.sabetilab.org/">Sabeti Lab</a> at the Broad Institute of MIT and Harvard. Prior to joining the Broad, I was a Professor Joe Greene Postdoctoral Fellow in the <a href="https://libna.mntl.illinois.edu/">Bashir Lab</a> at the University of Illinois Urbana-Champaign.</p>
-      <p>My research focuses on diagnostics for respiratory viruses (SARS-CoV-2, Influenza, RSV) and bloodstream infections (Sepsis, Hepatitis B). I developed a biphasic blood drying method enabling purification-free pathogen detection, and an amplification-free OR-gated CRISPR-Cascade assay achieving attomolar sensitivity.</p>
-      <p>Outside the lab, I enjoy spending time with my family — my wife and our son.</p>
+      <p>I am a Postdoctoral Associate in the <a href="https://www.sabetilab.org/">Sabeti Lab</a> at the Broad Institute of MIT and Harvard. Previously, I was a Professor Joe Greene Postdoctoral Fellow in the <a href="https://libna.mntl.illinois.edu/">Bashir Lab</a> at the University of Illinois Urbana-Champaign.</p>
+      <p>My vision is to establish a new field of <em>blood engineering for diagnostics</em> — integrating research, teaching, mentoring, and outreach to become scientifically influential and foster next-generation scientific leaders.</p>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card"><span class="stat-num">20</span><span class="stat-label">Publications</span></div>
+      <div class="stat-card"><span class="stat-num">10</span><span class="stat-label">First-authored</span></div>
+      <div class="stat-card"><span class="stat-num">43</span><span class="stat-label">Recognitions</span></div>
+      <div class="stat-card"><span class="stat-num">$260K+</span><span class="stat-label">Funding secured</span></div>
     </div>
     <div class="hero-links">
-      <a href="mailto:jongwon6@illinois.edu">✉ Email</a>
+      <a href="mailto:limjongw@broadinstitute.org">✉ Email</a>
       <a href="https://scholar.google.com/citations?user=1zvHlaAAAAAJ" target="_blank">Scholar</a>
       <a href="https://www.linkedin.com/in/jongwon-lim-3518251b7/" target="_blank">LinkedIn</a>
-      <a href="https://jongwonlim.com/useful-info/" target="_blank">CV</a>
+      <a href="https://www.youtube.com/@jongwonlim" target="_blank">YouTube</a>
     </div>
   </div>
 </div>
@@ -388,6 +194,39 @@
   </div>
 
   <div class="section">
+    <div class="section-title">Professional Experience</div>
+    <div class="section-line"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <h4>Broad Institute of MIT and Harvard — Cambridge, MA</h4>
+          <div class="tl-role">Postdoctoral Associate · Sabeti Lab</div>
+          <div class="tl-period">2026 – Present</div>
+          <div class="tl-desc">Advisor: Prof. Pardis Sabeti</div>
+          <div style="margin-top:8px;">
+            <span class="highlight-badge">2026 KSEA Postdoctoral Fellowship (5 selected, national)</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <h4>University of Illinois Urbana-Champaign — Champaign, IL</h4>
+          <div class="tl-role">Postdoctoral Fellow · Bashir Lab</div>
+          <div class="tl-period">2025 – 2026</div>
+          <div class="tl-desc">Advisor: Prof. Rashid Bashir · Professor Joe Greene Postdoctoral Fellow (2 selected, institutional)</div>
+          <div style="margin-top:8px;">
+            <span class="highlight-badge">2025 Trailblazers in Engineering Fellow, Purdue (33 selected)</span>
+            <span class="highlight-badge">2026 Future Leaders in Bioengineering, Rice (3 selected)</span>
+            <span class="highlight-badge">2026 CMBE Travel Award (7 selected)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
     <div class="section-title">Education</div>
     <div class="section-line"></div>
     <div class="timeline">
@@ -395,112 +234,142 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <h4>University of Illinois Urbana-Champaign</h4>
-          <div class="tl-role">Ph.D. in Bioengineering</div>
-          <div class="tl-period">Aug 2019 – Nov 2024</div>
-          <div class="tl-desc">Advisor: Prof. Rashid Bashir, Dean of The Grainger College of Engineering. Research on biphasic blood drying diagnostics and CRISPR-based pathogen detection.</div>
+          <div class="tl-role">Ph.D., Bioengineering</div>
+          <div class="tl-period">2020 – 2024</div>
+          <div class="tl-desc">Advisor: Prof. Rashid Bashir · Thesis: Next-generation diagnostics for respiratory and blood-borne pathogens · Asan Medical Bioscience Scholarship Fellow (2022–2024, 5 selected)</div>
+          <div style="margin-top:8px;">
+            <span class="highlight-badge">2024 Rising Stars in Materials Science & Engineering (10 selected)</span>
+            <span class="highlight-badge">2024 SLAS Innovation Award (1 of 7,000 attendees)</span>
+            <span class="highlight-badge">2022 Baxter Young Investigator Award (6 selected, N. America)</span>
+            <span class="highlight-badge">2022 & 2023 First Prize Oral Presentation, BIOE Symposium</span>
+          </div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <h4>Yonsei University, Seoul, South Korea</h4>
-          <div class="tl-role">M.S. in Biomedical Engineering</div>
+          <h4>Yonsei University — Wonju, South Korea</h4>
+          <div class="tl-role">M.Sc., Biomedical Engineering</div>
           <div class="tl-period">2017 – 2020</div>
+          <div class="tl-desc">Advisor: Prof. Sang Woo Lee · Thesis: Variable capacitance of live cell membranes investigated by microfluidic dielectrophoretic force spectroscopy</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <h4>Yonsei University, Seoul, South Korea</h4>
-          <div class="tl-role">B.S. in Biomedical Engineering</div>
+          <h4>Yonsei University — Wonju, South Korea</h4>
+          <div class="tl-role">B.S., Biomedical Engineering</div>
           <div class="tl-period">2013 – 2017</div>
-          <div class="tl-desc">Exchange student at University of Akron, USA (2015). Served as KATUSA (Korean Augmentation to the US Army), 2013–2014.</div>
+          <div class="tl-desc">Exchange student at University of Akron, USA (2015, Dean's List). KATUSA Sergeant, US Army (2013–2014).</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">Experience</div>
+    <div class="section-title">Selected Awards &amp; Fellowships</div>
     <div class="section-line"></div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <h4>Broad Institute of MIT and Harvard</h4>
-          <div class="tl-role">Postdoctoral Associate — Sabeti Lab</div>
-          <div class="tl-period">2025 – Present</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <h4>University of Illinois Urbana-Champaign</h4>
-          <div class="tl-role">Professor Joe Greene Postdoctoral Fellow — Bashir Lab</div>
-          <div class="tl-period">Nov 2024 – 2025</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <h4>University of Illinois Urbana-Champaign</h4>
-          <div class="tl-role">Graduate Research Assistant — Bashir Lab</div>
-          <div class="tl-period">Aug 2019 – Nov 2024</div>
-          <ul>
-            <li>Developed biphasic dried blood diagnostics for HBV, sepsis, and respiratory viruses</li>
-            <li>Built amplification-free CRISPR-Cascade assay published in PNAS (2025)</li>
-            <li>Developed smartphone-based point-of-care diagnostic platform for SARS-CoV-2</li>
-          </ul>
-        </div>
+    <div class="award-item">
+      <span class="award-year">2026</span>
+      <div>
+        <div class="award-name">KSEA Postdoctoral Fellowship</div>
+        <div class="award-org">Korean-American Scientists and Engineers Association · Hyundai Postdoctoral Fellowship</div>
+        <div class="award-detail">5 selected nationally · $2,500</div>
       </div>
     </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Awards &amp; Recognition</div>
-    <div class="section-line"></div>
+    <div class="award-item">
+      <span class="award-year">2026</span>
+      <div>
+        <div class="award-name">Future Leaders in Bioengineering</div>
+        <div class="award-org">Rice University, Department of Bioengineering</div>
+        <div class="award-detail">3 selected internationally · Invited seminar + faculty-style visit</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2025</span>
+      <div>
+        <div class="award-name">Professor Joe Greene Postdoctoral Fellow</div>
+        <div class="award-org">Materials Research Laboratory, The Grainger College of Engineering, UIUC</div>
+        <div class="award-detail">2 selected · $67,000/year + $5,000 research budget · Highest postdoctoral salary at UIUC</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2025</span>
+      <div>
+        <div class="award-name">Trailblazers in Engineering Fellow</div>
+        <div class="award-org">Purdue University, College of Engineering</div>
+        <div class="award-detail">33 selected out of 140 applicants · Faculty career development workshop</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2024</span>
+      <div>
+        <div class="award-name">SLAS Innovation Award</div>
+        <div class="award-org">Society for Laboratory Automation and Screening</div>
+        <div class="award-detail">1 selected out of 7,000 attendees · $10,000 · 4th student to receive this honor in 20 years</div>
+      </div>
+    </div>
     <div class="award-item">
       <span class="award-year">2024</span>
       <div>
         <div class="award-name">Rising Stars in Materials Science and Engineering</div>
-        <div class="award-org">Stanford · MIT · Carnegie Mellon · UIUC — Only UIUC graduate student selected</div>
-      </div>
-    </div>
-    <div class="award-item">
-      <span class="award-year">2023</span>
-      <div>
-        <div class="award-name">SLAS Innovation Award</div>
-        <div class="award-org">Society for Laboratory Automation and Screening</div>
+        <div class="award-org">Carnegie Mellon · UIUC · Stanford · MIT</div>
+        <div class="award-detail">10 selected nationally · Only UIUC graduate student selected</div>
       </div>
     </div>
     <div class="award-item">
       <span class="award-year">2022</span>
       <div>
-        <div class="award-name">Baxter International Award</div>
+        <div class="award-name">Asan Medical Bioscience Scholarship Fellow</div>
+        <div class="award-org">Asan Foundation</div>
+        <div class="award-detail">5 selected internationally · $32,000/year for two years · Largest fellowship amount in Korea</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2022</span>
+      <div>
+        <div class="award-name">Baxter Young Investigator Award</div>
         <div class="award-org">Baxter International Inc.</div>
+        <div class="award-detail">6 first-tier winners in North America · $3,000</div>
       </div>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-title">Teaching</div>
+    <div class="section-title">Teaching &amp; Mentoring</div>
     <div class="section-line"></div>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <h4>BIOE 202 — Cell &amp; Tissue Engineering Lab</h4>
-          <div class="tl-role">Teaching Assistant, PhD</div>
-          <div class="tl-period">UIUC</div>
+          <h4>Guest Lecturer — BIOE 199 &amp; BIOE 120, UIUC</h4>
+          <div class="tl-period">2023, 2024, 2025</div>
+          <div class="tl-desc">"Need for next-generation diagnostics for infections" — 3 invited guest lectures</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <h4>Bio-MEMS, Biosensors, Engineering Mathematics</h4>
-          <div class="tl-role">Teaching Assistant, Master's</div>
-          <div class="tl-period">Yonsei University</div>
+          <h4>Teaching Assistant — BIOE 202, Cell &amp; Tissue Engineering Lab, UIUC</h4>
+          <div class="tl-period">Jan 2023 – May 2023</div>
         </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <h4>Teaching Assistant — Yonsei University</h4>
+          <div class="tl-period">2017 – 2018</div>
+          <div class="tl-desc">Bio-MEMS (MBE4010), Biosensor Engineering (MBE4009), Circuit Theory, Engineering Mathematics</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:1rem; padding: 1rem 1.2rem; background: var(--bg-secondary); border-radius: 8px;">
+      <div style="font-size:13px; font-weight:500; color:var(--text-primary); margin-bottom:0.5rem;">Mentored students (11 total)</div>
+      <div style="font-size:12px; color:var(--text-secondary); line-height:1.7;">
+        Ph.D.: Katie Koprowski, An Bao Van, Takhmina Ayupova, Jiyoon Kim, Katy Wolhaupter<br>
+        M.S.: John Heredia, Sydney Khemtonglang<br>
+        Undergrad: Victoria Kindratenko (→ Ph.D., Northwestern), Alicia Yeun Kim (→ M.D., Texas A&M ENMED), Shamika Agrawal<br>
+        M.D.: Ishita Bhattacharya
       </div>
     </div>
   </div>
@@ -511,54 +380,79 @@
   <div class="page-header">
     <h2>Research</h2>
     <div class="page-header-line"></div>
+    <p>Point-of-care diagnostics · Blood engineering · CRISPR assays · Infectious disease detection</p>
   </div>
 
   <div class="research-item">
     <div class="r-img">🧬</div>
     <div class="r-content">
       <h3>Amplification-free CRISPR-Cascade for blood pathogen detection</h3>
-      <div class="r-meta">2022 – 2025 · Bashir Lab, UIUC</div>
+      <div class="r-meta">2022 – 2026 · Bashir Lab, UIUC</div>
       <div class="tags">
-        <span class="tag">CRISPR</span><span class="tag">Diagnostics</span>
-        <span class="tag">Blood</span><span class="tag">OR-gate</span><span class="tag">Attomolar</span>
+        <span class="tag">CRISPR</span><span class="tag">OR-gate</span>
+        <span class="tag">Attomolar</span><span class="tag">Whole blood</span><span class="tag">Amplification-free</span>
       </div>
-      <p>Developed an amplification-free, OR-gated CRISPR-Cascade assay achieving attomolar sensitivity for multiplex pathogen detection directly from whole blood — eliminating the need for nucleic acid purification.</p>
+      <p>Developed an amplification-free, OR-gated CRISPR-Cascade assay with dual-blocking autocatalytic strategy achieving attomolar sensitivity for multiplex pathogen detection directly from whole blood — eliminating nucleic acid purification.</p>
       <div class="pub-links">
-        <a class="pub-link" href="#">PNAS (2025)</a>
+        <a class="pub-link" href="https://www.pnas.org/doi/10.1073/pnas.2420166122" target="_blank">PNAS (2025)</a>
+        <a class="pub-link" href="https://www.pnas.org" target="_blank">PNAS (2026)</a>
       </div>
     </div>
   </div>
 
   <div class="research-item flip">
     <div class="r-content">
-      <h3>Biphasic dried blood diagnostics for HBV and sepsis</h3>
-      <div class="r-meta">2020 – 2024 · Bashir Lab, UIUC</div>
+      <h3>Biphasic dried blood diagnostics</h3>
+      <div class="r-meta">2020 – 2026 · Bashir Lab, UIUC</div>
       <div class="tags">
         <span class="tag">Blood drying</span><span class="tag">HBV</span>
-        <span class="tag">Sepsis</span><span class="tag">LAMP</span><span class="tag">RPA</span>
+        <span class="tag">Sepsis</span><span class="tag">LAMP</span><span class="tag">RPA</span><span class="tag">Zika</span><span class="tag">HCV</span>
       </div>
-      <p>Developed a novel biphasic (solid + liquid phase) blood drying method enabling inhibitor inactivation and DNA amplification simultaneously without purification. Achieved 10 IU mL⁻¹ LOD for Hepatitis B Virus within 1.5 hours.</p>
+      <p>Developed a biphasic (solid + liquid phase) blood drying method enabling inhibitor inactivation and DNA/RNA amplification simultaneously without purification. Established a new material platform — dried blood — for molecular diagnostics. Achieved 10 IU mL⁻¹ LOD for HBV within 1.5 hours.</p>
       <div class="pub-links">
-        <a class="pub-link" href="#">Biosensors &amp; Bioelectronics (2023)</a>
+        <a class="pub-link" href="#" target="_blank">Advanced Healthcare Materials (2024)</a>
+        <a class="pub-link" href="#" target="_blank">Small (2024)</a>
+        <a class="pub-link" href="#" target="_blank">PNAS (2022)</a>
+        <a class="pub-link" href="#" target="_blank">Science Advances (2026, accepted)</a>
       </div>
     </div>
     <div class="r-img">💧</div>
   </div>
 
   <div class="research-item">
-    <div class="r-img">📱</div>
+    <div class="r-img">🦠</div>
     <div class="r-content">
-      <h3>Smartphone-based point-of-care diagnostic platform</h3>
-      <div class="r-meta">2020 – 2022 · Bashir Lab, UIUC</div>
+      <h3>Multiplex point-of-care respiratory virus detection</h3>
+      <div class="r-meta">2020 – 2024 · Bashir Lab, UIUC</div>
       <div class="tags">
-        <span class="tag">Smartphone</span><span class="tag">SARS-CoV-2</span>
-        <span class="tag">Fluorescence</span><span class="tag">Point-of-care</span>
+        <span class="tag">SARS-CoV-2</span><span class="tag">Influenza</span>
+        <span class="tag">RSV</span><span class="tag">Microfluidics</span><span class="tag">Smartphone</span>
       </div>
-      <p>Built a smartphone-integrated diagnostic device with temperature control, fluorescence reading, and contamination-free cartridges for SARS-CoV-2 variant identification at the point of care.</p>
+      <p>Built a smartphone-integrated point-of-care platform with temperature control, fluorescence reading, and contamination-free cartridges for simultaneous detection of SARS-CoV-2, Influenza, and RSV, including variant identification.</p>
       <div class="pub-links">
-        <a class="pub-link" href="#">Lab on a Chip (2022)</a>
+        <a class="pub-link" href="#" target="_blank">ACS Sensors (2024)</a>
+        <a class="pub-link" href="#" target="_blank">Lab on a Chip (2022)</a>
+        <a class="pub-link" href="#" target="_blank">ACS Sensors (2021)</a>
       </div>
     </div>
+  </div>
+
+  <div class="research-item flip">
+    <div class="r-content">
+      <h3>Rapid, culture-free bloodstream infection diagnostics</h3>
+      <div class="r-meta">2024 – 2026 · Bashir Lab, UIUC &amp; Sabeti Lab, Broad Institute</div>
+      <div class="tags">
+        <span class="tag">Sepsis</span><span class="tag">Culture-free</span>
+        <span class="tag">Gram typing</span><span class="tag">LAMP</span>
+      </div>
+      <p>Developed a culture-free biphasic duplex-LAMP assay for gram-typing bacteria panels directly from whole blood, enabling rapid sepsis diagnosis without lengthy culture steps.</p>
+      <div class="pub-links">
+        <a class="pub-link" href="#" target="_blank">Nature Reviews Bioengineering (2026, accepted)</a>
+        <a class="pub-link" href="#" target="_blank">ACS Sensors (2026)</a>
+        <a class="pub-link" href="#" target="_blank">SLAS Technology (2025)</a>
+      </div>
+    </div>
+    <div class="r-img">🔬</div>
   </div>
 </div>
 
@@ -567,32 +461,110 @@
   <div class="page-header">
     <h2>Publications</h2>
     <div class="page-header-line"></div>
+    <p>20 publications · 10 first-authored · 6 second-authored · <a href="https://scholar.google.com/citations?user=1zvHlaAAAAAJ" target="_blank">Google Scholar</a></p>
   </div>
 
   <div class="section">
+    <div class="section-title">Journal Articles</div>
+    <div class="section-line"></div>
+
+    <div class="pub-item">
+      <div class="pub-title">Amplification of RNA for Identification of Zika and HCV in Whole Blood</div>
+      <div class="pub-authors"><strong>Lim, J.</strong>, Lee, H., Wester, M., Koprowski, K., … Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2026</span><span class="pub-journal">Science Advances (Accepted)</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Rapid, Culture-Free Diagnosis of Bloodstream Infections in Sepsis</div>
+      <div class="pub-authors">Wester, M., <strong>Lim, J.</strong>, Ghaderinia, M., … &amp; Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2026</span><span class="pub-journal">Nature Reviews Bioengineering (Accepted)</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Amplification-free Dual-blocking Autocatalytic CRISPR-Cascade for Attomolar DNA Detection with Low Nonspecific Signal</div>
+      <div class="pub-authors">*<strong>Lim, J.</strong>, *Van, A., *Wester, M., Koprowski, K., Valera, E., &amp; Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2026</span><span class="pub-journal">PNAS, 123.21: e2537414123</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Gram Typing Bacteria Panels in Whole Blood Using a Biphasic Duplex-Loop-Mediated Isothermal Amplification Assay</div>
+      <div class="pub-authors">Koprowski, K., <strong>Lim, J.</strong>, Van, A., … &amp; Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2026</span><span class="pub-journal">ACS Sensors, 11, 3, 2366–2375</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">A Dual-port, Smartphone-linked, Pocket-size Fluorimeter for Rapid Molecular Diagnostic Assays at Point-of-care</div>
+      <div class="pub-authors">Lee, H., <strong>Lim, J.</strong>, Akin, L., Shepherd, S., … &amp; Cunningham, B. T.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2026</span><span class="pub-journal">IEEE Sensors Journal</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Review on Biphasic Blood Drying Method for Rapid Pathogen Detection in Bloodstream Infections</div>
+      <div class="pub-authors"><strong>Lim, J.</strong>, Koprowski, K., Wester, M., Valera, E., &amp; Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2025</span><span class="pub-journal">SLAS Technology, 1002276</span></div>
+    </div>
+
     <div class="pub-item">
       <div class="pub-title">Amplification-free, OR-gated CRISPR-Cascade reaction for pathogen detection in blood samples</div>
-      <div class="pub-authors"><strong>Jongwon Lim</strong>, et al.</div>
-      <div class="pub-journal-row">
-        <span class="pub-year-badge">2025</span>
-        <span class="pub-journal">Proceedings of the National Academy of Sciences (PNAS)</span>
-      </div>
+      <div class="pub-authors"><strong>Lim, J.</strong>, Van, A., Koprowski, K., Wester, M., Valera, E., Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2025</span><span class="pub-journal">PNAS, 122.11: e2420166122</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Point-of-care Multiplex Detection of Respiratory Viruses</div>
+      <div class="pub-authors"><strong>Lim, J.</strong>, Koprowski, K., Stavins, R., Xuan, N., … &amp; Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2024</span><span class="pub-journal">ACS Sensors, 4c00992</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Dried Blood Matrix as a New Material for Detection of DNA Viruses</div>
+      <div class="pub-authors"><strong>Lim, J.</strong>, Hwang, J., Min, H., Wester, M., Kim, C., Valera, E., Kong, J., &amp; Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2024</span><span class="pub-journal">Advanced Healthcare Materials, 202402506</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">A Blood Drying Process for DNA Amplification</div>
+      <div class="pub-authors"><strong>Lim, J.</strong>, Zhou, S., Baek, J., Kim, A. Y., Valera, E., Sweedler, J., &amp; Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2024</span><span class="pub-journal">Small, 2307959</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">A Culture-free Biphasic Approach for Sensitive and Rapid Detection of Pathogens in Dried Whole Blood Matrix</div>
+      <div class="pub-authors">Ganguli, A., *<strong>Lim, J.</strong>, *Mostafa, A., … &amp; Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2022</span><span class="pub-journal">PNAS, 119.40: e2209607119</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Microfluidic Point-Of-Care Device for Detection of Early Strains and B.1.1.7 Variant of SARS-CoV-2 Virus</div>
+      <div class="pub-authors">*<strong>Lim, J.</strong>, *Stavins, R., Kindratenko, V., Baek, J., … &amp; Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2022</span><span class="pub-journal">Lab on a Chip, 22, 1297–1309</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Detection of SARS-CoV-2 Virus Amplification Using a Crumpled Graphene Field-Effect Transistor Biosensor</div>
+      <div class="pub-authors">*Park, I., *<strong>Lim, J.</strong>, You, S., Hwang, M. T., … &amp; Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2021</span><span class="pub-journal">ACS Sensors, 6(12), 4461–4470</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">COVID-19 Point-of-Care Diagnostics: Present and Future</div>
+      <div class="pub-authors">Valera, E., Jankelow, A., <strong>Lim, J.</strong>, … &amp; Bashir, R.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2021</span><span class="pub-journal">ACS Nano, 15(5), 7899–7906</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Patents</div>
+    <div class="section-line"></div>
+    <div class="pub-item">
+      <div class="pub-title">Dual-Blocked Split Activator Logic for Amplification-Free CRISPR Diagnostics</div>
+      <div class="pub-authors">Bashir, R., <strong>Lim, J.</strong></div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2025</span><span class="pub-journal">U.S. Provisional Patent App. No. 63/858,846</span></div>
     </div>
     <div class="pub-item">
-      <div class="pub-title">Novel drying process coupled with thermal treatment for Hepatitis B Virus diagnostics with 10 IU mL⁻¹ limit of detection within 1.5 hours</div>
-      <div class="pub-authors"><strong>Jongwon Lim</strong>, et al.</div>
-      <div class="pub-journal-row">
-        <span class="pub-year-badge">2023</span>
-        <span class="pub-journal">Biosensors and Bioelectronics</span>
-      </div>
-    </div>
-    <div class="pub-item">
-      <div class="pub-title">Smartphone-based diagnostic platform integrating temperature control, fluorescence reading, and SARS-CoV-2 variant identification</div>
-      <div class="pub-authors"><strong>Jongwon Lim</strong>, et al.</div>
-      <div class="pub-journal-row">
-        <span class="pub-year-badge">2022</span>
-        <span class="pub-journal">Lab on a Chip</span>
-      </div>
+      <div class="pub-title">Culture-free biphasic approach for rapid detection of pathogens from whole blood</div>
+      <div class="pub-authors">Bashir, R., Ganguli, A., <strong>Lim, J.</strong>, Mostafa, A., Valera, E., Wester, M., &amp; Berger, J.</div>
+      <div class="pub-journal-row"><span class="pub-year-badge">2024</span><span class="pub-journal">U.S. Patent App. No. 18/372,576</span></div>
     </div>
   </div>
 </div>
@@ -605,9 +577,13 @@
   </div>
   <div class="contact-wrap">
     <p>Feel free to reach out about research collaborations, diagnostic platform development, or academic opportunities. I am always happy to connect with fellow researchers and students.</p>
+    <div style="font-size:13px; color:var(--text-muted); margin-bottom:1.5rem;">75 Ames St, Cambridge, MA, 02142</div>
     <div class="contact-links">
-      <a class="contact-link" href="mailto:jongwon6@illinois.edu">
-        <span class="contact-icon">✉</span> jongwon6@illinois.edu
+      <a class="contact-link" href="mailto:limjongw@broadinstitute.org">
+        <span class="contact-icon">✉</span> limjongw@broadinstitute.org
+      </a>
+      <a class="contact-link" href="mailto:jongwonlim6@gmail.com">
+        <span class="contact-icon">✉</span> jongwonlim6@gmail.com
       </a>
       <a class="contact-link" href="https://scholar.google.com/citations?user=1zvHlaAAAAAJ" target="_blank">
         <span class="contact-icon">🎓</span> Google Scholar
@@ -615,11 +591,14 @@
       <a class="contact-link" href="https://www.linkedin.com/in/jongwon-lim-3518251b7/" target="_blank">
         <span class="contact-icon">💼</span> LinkedIn
       </a>
+      <a class="contact-link" href="https://jongwonlim.com" target="_blank">
+        <span class="contact-icon">🌐</span> jongwonlim.com
+      </a>
     </div>
   </div>
 </div>
 
-<div class="footer">© 2026 Jongwon Lim · Broad Institute of MIT and Harvard</div>
+<div class="footer">© 2026 Jongwon Lim · Broad Institute of MIT and Harvard · Last updated May 2026</div>
 
 <script>
   function showPage(id, el) {
@@ -628,9 +607,7 @@
     document.getElementById(id).classList.add('active');
     if (el) el.classList.add('active');
     window.scrollTo(0, 0);
-    return false;
   }
-
   function toggleTheme() {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
