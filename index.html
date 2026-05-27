@@ -123,6 +123,8 @@
     .award-name { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 2px; }
     .award-name a { color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--border-strong); }
     .award-name a:hover { color: var(--purple); border-bottom-color: var(--purple); }
+    .gold-badge { display: inline-flex; align-items: center; gap: 3px; font-size: 10px; padding: 2px 7px; border-radius: 10px; background: #FEF3C7; color: #92400E; border: 0.5px solid #FCD34D; font-weight: 500; margin-left: 6px; vertical-align: middle; }
+    [data-theme="dark"] .gold-badge { background: #422006; color: #FCD34D; border-color: #92400E; }
     .award-org { font-size: 12px; color: var(--text-muted); }
     .award-detail { font-size: 11px; color: var(--purple); margin-top: 2px; }
 
@@ -321,7 +323,10 @@
   </div>
 
   <div class="section">
-    <div class="section-title">Selected Awards &amp; Fellowships</div>
+    <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:0.4rem;">
+      <div class="section-title">Selected Awards &amp; Fellowships</div>
+      <span id="award-count-label" style="font-size:12px;color:var(--text-muted);">17 of <span id="total-recognitions">43</span> total recognitions</span>
+    </div>
     <div class="section-line"></div>
     <div class="award-item">
       <span class="award-year">2026</span>
@@ -334,7 +339,7 @@
     <div class="award-item">
       <span class="award-year">2026</span>
       <div>
-        <div class="award-name"><a href="https://bioengineering.rice.edu/news-events/future-leaders-bioengineering" target="_blank">Future Leaders in Bioengineering</a></div>
+        <div class="award-name"><a href="https://bioengineering.rice.edu/news-events/future-leaders-bioengineering" target="_blank">Future Leaders in Bioengineering</a><span class="gold-badge">⭐ 3 selected internationally</span></div>
         <div class="award-org">Rice University, Department of Bioengineering</div>
         <div class="award-detail">3 selected internationally · Invited seminar + faculty-style visit</div>
       </div>
@@ -342,7 +347,7 @@
     <div class="award-item">
       <span class="award-year">2025</span>
       <div>
-        <div class="award-name"><a href="https://mrl.illinois.edu/news/73787" target="_blank">Professor Joe Greene Postdoctoral Fellow</a></div>
+        <div class="award-name"><a href="https://mrl.illinois.edu/news/73787" target="_blank">Professor Joe Greene Postdoctoral Fellow</a><span class="gold-badge">⭐ 2 selected</span></div>
         <div class="award-org">Materials Research Laboratory, The Grainger College of Engineering, UIUC</div>
         <div class="award-detail">2 selected · $67,000/year + $5,000 research budget · Highest postdoctoral salary at UIUC</div>
       </div>
@@ -358,7 +363,7 @@
     <div class="award-item">
       <span class="award-year">2024</span>
       <div>
-        <div class="award-name"><a href="https://www.slas.org/resources/awards-and-grants/innovation-award-winners/" target="_blank">SLAS Innovation Award</a></div>
+        <div class="award-name"><a href="https://www.slas.org/resources/awards-and-grants/innovation-award-winners/" target="_blank">SLAS Innovation Award</a><span class="gold-badge">⭐ 1 of 7,000 attendees</span></div>
         <div class="award-org">Society for Laboratory Automation and Screening</div>
         <div class="award-detail">1 selected out of 7,000 attendees · $10,000 · 4th student to receive this honor in 20 years</div>
       </div>
@@ -366,15 +371,79 @@
     <div class="award-item">
       <span class="award-year">2024</span>
       <div>
-        <div class="award-name"><a href="https://mse.engineering.cmu.edu/education/rising-stars.html" target="_blank">Rising Stars in Materials Science and Engineering</a></div>
+        <div class="award-name"><a href="https://mse.engineering.cmu.edu/education/rising-stars.html" target="_blank">Rising Stars in Materials Science and Engineering</a><span class="gold-badge">⭐ 10 selected nationally</span></div>
         <div class="award-org">Carnegie Mellon · UIUC · Stanford · MIT</div>
         <div class="award-detail">10 selected nationally · Only UIUC graduate student selected</div>
       </div>
     </div>
     <div class="award-item">
+      <span class="award-year">2024</span>
+      <div>
+        <div class="award-name">Talent Award of Korea</div>
+        <div class="award-org">Ministry of Education of the Republic of Korea</div>
+        <div class="award-detail">50 selected nationally · $1,300 · Given to young talents who will lead future society</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2024</span>
+      <div>
+        <div class="award-name">Korean Honor Scholarship (KHS)</div>
+        <div class="award-org">Embassy of the Republic of Korea, Washington, D.C.</div>
+        <div class="award-detail">16 selected nationally in USA · $1,500 · Outstanding Korean graduate students across the U.S.</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2024</span>
+      <div>
+        <div class="award-name">MOGAM-KASBP Scholarship</div>
+        <div class="award-org">Korean American Society in Biotech and Pharmaceuticals (KASBP)</div>
+        <div class="award-detail">10 selected internationally · $5,000 · Highly competitive national pool</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2024</span>
+      <div>
+        <div class="award-name">KFAS-Salzburg Global Leadership Initiative</div>
+        <div class="award-org">Salzburg Global Seminar & Korea Foundation for Advanced Studies</div>
+        <div class="award-detail">20 selected internationally · Expenses covered · Global leadership and innovation in technology</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2023–2024</span>
+      <div>
+        <div class="award-name">Mavis Future Faculty (MF3) Fellows</div>
+        <div class="award-org">Graduate College, UIUC</div>
+        <div class="award-detail">57 selected institutionally · Training the next generation of engineering faculty</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2023</span>
+      <div>
+        <div class="award-name">Global Young Scientists Summit (GYSS)</div>
+        <div class="award-org">Singapore · Institutional Representative, UIUC</div>
+        <div class="award-detail">10 selected from UIUC · Travel grants included</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2022 & 2023</span>
+      <div>
+        <div class="award-name">First Prize — Oral Presentation, BIOE Research Symposium<span class="gold-badge">⭐ First in BIOE history, 2 consecutive years</span></div>
+        <div class="award-org">5th and 6th Annual BIOE Research Symposium, UIUC</div>
+        <div class="award-detail">$250 each · First student in BIOE history to win for two consecutive years</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2022 & 2024</span>
+      <div>
+        <div class="award-name">SEED — Scientists and Engineers Early Career Development</div>
+        <div class="award-org">Korean-American Scientists and Engineers Association (KSEA)</div>
+        <div class="award-detail">37 selected nationally in USA · Expenses covered for accommodation and transportation</div>
+      </div>
+    </div>
+    <div class="award-item">
       <span class="award-year">2022</span>
       <div>
-        <div class="award-name"><a href="https://www.asanfoundation.or.kr/af/eng.scholarships.scholarships.sp" target="_blank">Asan Medical Bioscience Scholarship Fellow</a></div>
+        <div class="award-name"><a href="https://www.asanfoundation.or.kr/af/eng.scholarships.scholarships.sp" target="_blank">Asan Medical Bioscience Scholarship Fellow</a><span class="gold-badge">⭐ 5 selected internationally</span></div>
         <div class="award-org">Asan Foundation</div>
         <div class="award-detail">5 selected internationally · $32,000/year for two years · Largest fellowship amount in Korea</div>
       </div>
@@ -385,6 +454,14 @@
         <div class="award-name"><a href="https://www.baxter.com/baxter-young-investigator-awards-2022-winners" target="_blank">Baxter Young Investigator Award</a></div>
         <div class="award-org">Baxter International Inc.</div>
         <div class="award-detail">6 first-tier winners in North America · $3,000</div>
+      </div>
+    </div>
+    <div class="award-item">
+      <span class="award-year">2022</span>
+      <div>
+        <div class="award-name">Mogam Science Scholarship Foundation</div>
+        <div class="award-org">Green Cross Corp.</div>
+        <div class="award-detail">14 selected internationally · $10,000 · Awarded to international Korean students globally</div>
       </div>
     </div>
   </div>
@@ -732,6 +809,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     renderPubs('all');
     fetchCitations();
+    syncAwardCount();
   });
 
   // Re-fetch citations after filter (cards re-rendered)
@@ -741,6 +819,23 @@
     el.classList.add('active');
     renderPubs(tag);
     fetchCitations();
+  }
+
+  function syncAwardCount() {
+    const totalEl = document.getElementById('total-recognitions');
+    const statCards = document.querySelectorAll('.stat-card');
+    statCards.forEach(card => {
+      if (card.querySelector('.stat-label')?.textContent.trim() === 'Recognitions') {
+        const num = card.querySelector('.stat-num')?.textContent.trim();
+        if (num && totalEl) totalEl.textContent = num;
+      }
+    });
+    const countLabel = document.getElementById('award-count-label');
+    const awardItems = document.querySelectorAll('.award-item');
+    if (countLabel) {
+      const shown = awardItems.length;
+      countLabel.innerHTML = `${shown} of <span id="total-recognitions">${totalEl ? totalEl.textContent : '43'}</span> total recognitions`;
+    }
   }
 
   function showPage(id, el) {
