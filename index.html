@@ -6,7 +6,7 @@
   <title>Jongwon Lim</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --purple: #6B5FD4;
@@ -129,6 +129,44 @@
     .contact-link { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-secondary); text-decoration: none; padding: 0.8rem 1rem; border: 0.5px solid var(--border); border-radius: 8px; transition: border-color 0.2s, color 0.2s, background 0.2s; }
     .contact-link:hover { border-color: var(--purple); color: var(--purple); background: var(--purple-light); text-decoration: none; }
     .contact-icon { font-size: 18px; width: 24px; text-align: center; }
+
+    .cite-badge { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; color: var(--text-muted); margin: 4px 0 2px; }
+    [data-theme="dark"] .cite-badge { color: var(--text-muted); }
+
+    .journal-logos-wrap { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 0.5px solid var(--border); }
+    .journal-logos-grid { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 1.2rem; }
+    .jlogo-link { display: inline-flex; align-items: center; justify-content: center; padding: 10px 18px; border: 0.5px solid var(--border); border-radius: 8px; background: var(--bg); transition: border-color 0.2s, box-shadow 0.2s; text-decoration: none; }
+    .jlogo-link:hover { border-color: var(--border-strong); box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-decoration: none; }
+    .jlogo-img { height: 44px; width: auto; max-width: 160px; object-fit: contain; transition: opacity 0.2s; }
+    [data-theme="dark"] .jlogo-img { filter: brightness(0.85); }
+    .jlogo-fallback { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+    .scholar-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--purple); text-decoration: none; }
+    .scholar-link:hover { text-decoration: underline; }
+
+    .pub-year-group { margin-bottom: 2.5rem; }
+    .pub-year-label { font-family: 'EB Garamond', serif; font-size: 26px; font-weight: 400; color: var(--text-primary); margin-bottom: 1rem; }
+    .pub-year-group.hidden { display: none; }
+
+    .pub-filter-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.8rem; }
+    .pftab { font-size: 12px; padding: 6px 16px; border-radius: 20px; border: 0.5px solid var(--border-strong); background: transparent; color: var(--text-secondary); cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+    .pftab:hover { border-color: var(--purple); color: var(--purple); }
+    .pftab.active { background: var(--purple); color: #fff; border-color: var(--purple); }
+    .pub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .pcard { background: var(--bg); border: 0.5px solid var(--border); border-radius: 10px; padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; transition: box-shadow 0.2s, border-color 0.2s; }
+    .pcard:hover { border-color: var(--purple); box-shadow: 0 2px 12px rgba(107,95,212,0.1); }
+    .pcard.hidden { display: none; }
+    .pcard-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem; }
+    .pcard-journal { font-size: 13px; font-weight: 700; color: #2563eb; font-style: italic; line-height: 1.3; flex: 1; }
+    [data-theme="dark"] .pcard-journal { color: #60a5fa; }
+    .pcard-url { font-size: 11px; color: var(--text-muted); text-decoration: none; border: 0.5px solid var(--border); border-radius: 4px; padding: 2px 7px; white-space: nowrap; margin-left: 8px; transition: color 0.2s, border-color 0.2s; }
+    .pcard-url:hover { color: #2563eb; border-color: #2563eb; text-decoration: none; }
+    .pcard-title { font-size: 13px; font-weight: 500; color: var(--text-primary); line-height: 1.5; flex: 1; }
+    .pcard-authors { font-size: 11px; color: var(--text-secondary); line-height: 1.4; }
+    .pcard-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: auto; padding-top: 0.4rem; }
+    .pcard-status { font-size: 10px; color: #16a34a; font-weight: 500; letter-spacing: 0.04em; white-space: nowrap; margin-left: 8px; padding-top: 2px; }
+    .ptag { font-size: 10px; padding: 1px 6px; border-radius: 4px; font-weight: 400; color: var(--text-muted); background: var(--bg-secondary); border: 0.5px solid var(--border); }
+    [data-theme="dark"] .ptag { color: var(--text-muted); background: var(--bg-secondary); }
+    @media (max-width: 600px) { .pub-grid { grid-template-columns: 1fr; } }
 
     .rcard { background: var(--bg); border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
     .rcard-header { background: #2d3a4e; padding: 0.9rem 1.2rem; display: flex; align-items: center; gap: 10px; }
@@ -507,106 +545,71 @@
     <p>20 publications · 10 first-authored · 6 second-authored · <a href="https://scholar.google.com/citations?user=1zvHlaAAAAAJ" target="_blank">Google Scholar</a></p>
   </div>
 
-  <div class="section">
-    <div class="section-title">Journal Articles</div>
-    <div class="section-line"></div>
-
-    <div class="pub-item">
-      <div class="pub-title">Amplification of RNA for Identification of Zika and HCV in Whole Blood</div>
-      <div class="pub-authors"><strong>Lim, J.</strong>, Lee, H., Wester, M., Koprowski, K., … Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2026</span><span class="pub-journal">Science Advances (Accepted)</span></div>
+  <!-- Journal logos banner -->
+  <div class="journal-logos-wrap">
+    <div class="journal-logos-grid">
+      <a href="https://www.pnas.org" target="_blank" class="jlogo-link"><img src="PNAS logo.jpg" alt="PNAS" class="jlogo-img"></a>
+      <a href="https://www.science.org/journal/sciadv" target="_blank" class="jlogo-link"><img src="Science Advances logo.jpg" alt="Science Advances" class="jlogo-img"></a>
+      <a href="https://www.nature.com/natrevbioeng" target="_blank" class="jlogo-link"><img src="Nature Reviews Bioengineering logo.png" alt="Nature Reviews Bioengineering" class="jlogo-img"></a>
+      <a href="https://pubs.acs.org/journal/ascefj" target="_blank" class="jlogo-link"><img src="ACS Sensors logo2.png" alt="ACS Sensors" class="jlogo-img"></a>
+      <a href="https://pubs.acs.org/journal/ancac3" target="_blank" class="jlogo-link"><img src="ACS Nano logo.png" alt="ACS Nano" class="jlogo-img"></a>
+      <a href="https://www.rsc.org/journals-books-databases/find-an-journal/journal/LC" target="_blank" class="jlogo-link"><img src="Lab chip logo.jpg" alt="Lab on a Chip" class="jlogo-img"></a>
+      <a href="https://onlinelibrary.wiley.com/journal/20922659" target="_blank" class="jlogo-link"><img src="Advanced Healthcare Materials logo.png" alt="Advanced Healthcare Materials" class="jlogo-img"></a>
+      <a href="https://onlinelibrary.wiley.com/journal/16136829" target="_blank" class="jlogo-link"><img src="Small logo 2.png" alt="Small" class="jlogo-img"></a>
+      <a href="https://www.science.org/journal/scirobotics" target="_blank" class="jlogo-link"><img src="Science Robotics Logo.png" alt="Science Robotics" class="jlogo-img"></a>
     </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Rapid, Culture-Free Diagnosis of Bloodstream Infections in Sepsis</div>
-      <div class="pub-authors">Wester, M., <strong>Lim, J.</strong>, Ghaderinia, M., … &amp; Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2026</span><span class="pub-journal">Nature Reviews Bioengineering (Accepted)</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Amplification-free Dual-blocking Autocatalytic CRISPR-Cascade for Attomolar DNA Detection with Low Nonspecific Signal</div>
-      <div class="pub-authors">*<strong>Lim, J.</strong>, *Van, A., *Wester, M., Koprowski, K., Valera, E., &amp; Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2026</span><span class="pub-journal">PNAS, 123.21: e2537414123</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Gram Typing Bacteria Panels in Whole Blood Using a Biphasic Duplex-Loop-Mediated Isothermal Amplification Assay</div>
-      <div class="pub-authors">Koprowski, K., <strong>Lim, J.</strong>, Van, A., … &amp; Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2026</span><span class="pub-journal">ACS Sensors, 11, 3, 2366–2375</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">A Dual-port, Smartphone-linked, Pocket-size Fluorimeter for Rapid Molecular Diagnostic Assays at Point-of-care</div>
-      <div class="pub-authors">Lee, H., <strong>Lim, J.</strong>, Akin, L., Shepherd, S., … &amp; Cunningham, B. T.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2026</span><span class="pub-journal">IEEE Sensors Journal</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Review on Biphasic Blood Drying Method for Rapid Pathogen Detection in Bloodstream Infections</div>
-      <div class="pub-authors"><strong>Lim, J.</strong>, Koprowski, K., Wester, M., Valera, E., &amp; Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2025</span><span class="pub-journal">SLAS Technology, 1002276</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Amplification-free, OR-gated CRISPR-Cascade reaction for pathogen detection in blood samples</div>
-      <div class="pub-authors"><strong>Lim, J.</strong>, Van, A., Koprowski, K., Wester, M., Valera, E., Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2025</span><span class="pub-journal">PNAS, 122.11: e2420166122</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Point-of-care Multiplex Detection of Respiratory Viruses</div>
-      <div class="pub-authors"><strong>Lim, J.</strong>, Koprowski, K., Stavins, R., Xuan, N., … &amp; Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2024</span><span class="pub-journal">ACS Sensors, 4c00992</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Dried Blood Matrix as a New Material for Detection of DNA Viruses</div>
-      <div class="pub-authors"><strong>Lim, J.</strong>, Hwang, J., Min, H., Wester, M., Kim, C., Valera, E., Kong, J., &amp; Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2024</span><span class="pub-journal">Advanced Healthcare Materials, 202402506</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">A Blood Drying Process for DNA Amplification</div>
-      <div class="pub-authors"><strong>Lim, J.</strong>, Zhou, S., Baek, J., Kim, A. Y., Valera, E., Sweedler, J., &amp; Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2024</span><span class="pub-journal">Small, 2307959</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">A Culture-free Biphasic Approach for Sensitive and Rapid Detection of Pathogens in Dried Whole Blood Matrix</div>
-      <div class="pub-authors">Ganguli, A., *<strong>Lim, J.</strong>, *Mostafa, A., … &amp; Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2022</span><span class="pub-journal">PNAS, 119.40: e2209607119</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Microfluidic Point-Of-Care Device for Detection of Early Strains and B.1.1.7 Variant of SARS-CoV-2 Virus</div>
-      <div class="pub-authors">*<strong>Lim, J.</strong>, *Stavins, R., Kindratenko, V., Baek, J., … &amp; Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2022</span><span class="pub-journal">Lab on a Chip, 22, 1297–1309</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Detection of SARS-CoV-2 Virus Amplification Using a Crumpled Graphene Field-Effect Transistor Biosensor</div>
-      <div class="pub-authors">*Park, I., *<strong>Lim, J.</strong>, You, S., Hwang, M. T., … &amp; Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2021</span><span class="pub-journal">ACS Sensors, 6(12), 4461–4470</span></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">COVID-19 Point-of-Care Diagnostics: Present and Future</div>
-      <div class="pub-authors">Valera, E., Jankelow, A., <strong>Lim, J.</strong>, … &amp; Bashir, R.</div>
-      <div class="pub-journal-row"><span class="pub-year-badge">2021</span><span class="pub-journal">ACS Nano, 15(5), 7899–7906</span></div>
-    </div>
+    <a href="https://scholar.google.com/citations?user=1zvHlaAAAAAJ" target="_blank" class="scholar-link">🎓 Google Scholar Profile</a>
   </div>
 
-  <div class="section">
+  <!-- Filter tabs -->
+  <div class="pub-filter-tabs">
+    <button class="pftab active" onclick="filterPubs('all', this)">All</button>
+    <button class="pftab" onclick="filterPubs('respiratory', this)">Respiratory diagnostics</button>
+    <button class="pftab" onclick="filterPubs('blood', this)">Blood diagnostics</button>
+    <button class="pftab" onclick="filterPubs('crispr', this)">CRISPR</button>
+    <button class="pftab" onclick="filterPubs('microfluidic', this)">Microfluidics</button>
+    <button class="pftab" onclick="filterPubs('biosensor', this)">Biosensor</button>
+  </div>
+
+  <!-- All pub cards (hidden container, JS reads from here) -->
+  <div id="all-pub-cards" style="display:none;">
+    <div class="pcard" data-tags="blood crispr" data-year="2026"><div class="pcard-top"><div class="pcard-journal">Science Advances</div><div class="pcard-status">Accepted</div></div><div class="pcard-title">Amplification of RNA for Identification of Zika and HCV in Whole Blood</div><div class="pcard-authors"><strong>Jongwon Lim</strong>, Lee, H., Wester, M., Koprowski, K., … Bashir, R.</div><div class="pcard-tags"><span class="ptag">Blood diagnostics</span><span class="ptag">CRISPR</span></div></div>
+    <div class="pcard" data-tags="blood crispr" data-year="2026"><div class="pcard-top"><div class="pcard-journal">Analytical Chemistry</div><div class="pcard-status">Under review</div></div><div class="pcard-title">Kinetic Modeling of CRISPR-Cascade Reactions for Amplification-Free Diagnostics</div><div class="pcard-authors">Wester, M., <strong>Jongwon Lim</strong>, Van, A., Koprowski, K., Valera, E., Bashir, R.</div><div class="pcard-tags"><span class="ptag">Blood diagnostics</span><span class="ptag">CRISPR</span></div></div>
+    <div class="pcard" data-tags="blood" data-year="2026"><div class="pcard-top"><div class="pcard-journal">Nature Reviews Bioengineering</div><div class="pcard-status">Accepted</div></div><div class="pcard-title">Rapid, Culture-Free Diagnosis of Bloodstream Infections in Sepsis</div><div class="pcard-authors">Wester, M., <strong>Jongwon Lim</strong>, Ghaderinia, M., … &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Blood diagnostics</span></div></div>
+    <div class="pcard" data-tags="blood crispr" data-year="2026"><div class="pcard-top"><div class="pcard-journal">PNAS</div><a class="pcard-url" href="https://www.pnas.org/doi/10.1073/pnas.2537414123" target="_blank">URL</a></div><div class="pcard-title">Amplification-free Dual-blocking Autocatalytic CRISPR-Cascade for Attomolar DNA Detection</div><div class="pcard-authors">*<strong>Jongwon Lim</strong>, *Van, A., *Wester, M., Koprowski, K., Valera, E., &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Blood diagnostics</span><span class="ptag">CRISPR</span></div></div>
+    <div class="pcard" data-tags="respiratory microfluidic biosensor" data-year="2026"><div class="pcard-top"><div class="pcard-journal">IEEE Sensors Journal</div><a class="pcard-url" href="https://ieeexplore.ieee.org/document/11533642" target="_blank">URL</a></div><div class="pcard-title">A Dual-port, Smartphone-linked, Pocket-size Fluorimeter for Rapid Molecular Diagnostic Assays</div><div class="pcard-authors">Lee, H., <strong>Jongwon Lim</strong>, Akin, L., Shepherd, S., … &amp; Cunningham, B. T.</div><div class="pcard-tags"><span class="ptag">Respiratory diagnostics</span><span class="ptag">Microfluidics</span><span class="ptag">Biosensor</span></div></div>
+    <div class="pcard" data-tags="blood microfluidic" data-year="2026"><div class="pcard-top"><div class="pcard-journal">ACS Sensors</div><a class="pcard-url" href="https://pubs.acs.org/doi/abs/10.1021/acssensors.5c04177" target="_blank">URL</a></div><div class="pcard-title">Gram Typing Bacteria Panels in Whole Blood Using a Biphasic Duplex-LAMP Assay</div><div class="pcard-authors">Koprowski, K., <strong>Jongwon Lim</strong>, Van, A., … &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Blood diagnostics</span><span class="ptag">Microfluidics</span></div></div>
+    <div class="pcard" data-tags="blood" data-year="2025"><div class="pcard-top"><div class="pcard-journal">Science Robotics</div><a class="pcard-url" href="https://www.science.org/doi/10.1126/scirobotics.adu5830" target="_blank">URL</a></div><div class="pcard-title">Optogenetic Neuromuscular Actuation of a Miniature Electronic Biohybrid Robot</div><div class="pcard-authors">Min, H., Wang, Y., Wang, J., … <strong>Jongwon Lim</strong>, … &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Biohybrid</span></div></div>
+    <div class="pcard" data-tags="blood" data-year="2025"><div class="pcard-top"><div class="pcard-journal">SLAS Technology</div><a class="pcard-url" href="https://www.sciencedirect.com/science/article/pii/S2472630325000342" target="_blank">URL</a></div><div class="pcard-title">Review on Biphasic Blood Drying Method for Rapid Pathogen Detection in Bloodstream Infections</div><div class="pcard-authors"><strong>Jongwon Lim</strong>, Koprowski, K., Wester, M., Valera, E., &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Blood diagnostics</span></div></div>
+    <div class="pcard" data-tags="blood crispr" data-year="2025"><div class="pcard-top"><div class="pcard-journal">PNAS</div><a class="pcard-url" href="https://www.pnas.org/doi/10.1073/pnas.2420166122" target="_blank">URL</a></div><div class="pcard-title">Amplification-free, OR-gated CRISPR-Cascade reaction for pathogen detection in blood samples</div><div class="pcard-authors"><strong>Jongwon Lim</strong>, Van, A., Koprowski, K., Wester, M., Valera, E., Bashir, R.</div><div class="pcard-tags"><span class="ptag">Blood diagnostics</span><span class="ptag">CRISPR</span></div></div>
+    <div class="pcard" data-tags="microfluidic" data-year="2024"><div class="pcard-top"><div class="pcard-journal">Microsystems &amp; Nanoengineering</div><a class="pcard-url" href="https://www.nature.com/articles/s41378-024-00786-4" target="_blank">URL</a></div><div class="pcard-title">On the Design and Fabrication of Nanoliter-Volume Hanging Drop Networks</div><div class="pcard-authors">Wester, M., <strong>Jongwon Lim</strong>, Khaertdinova, L., Darsi, S., … &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Microfluidics</span></div></div>
+    <div class="pcard" data-tags="respiratory microfluidic" data-year="2024"><div class="pcard-top"><div class="pcard-journal">ACS Sensors</div><a class="pcard-url" href="https://pubs.acs.org/doi/10.1021/acssensors.4c00992" target="_blank">URL</a></div><div class="pcard-title">Point-of-care Multiplex Detection of Respiratory Viruses</div><div class="pcard-authors"><strong>Jongwon Lim</strong>, Koprowski, K., Stavins, R., Xuan, N., … &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Respiratory diagnostics</span><span class="ptag">Microfluidics</span></div></div>
+    <div class="pcard" data-tags="blood" data-year="2024"><div class="pcard-top"><div class="pcard-journal">Advanced Healthcare Materials</div><a class="pcard-url" href="https://onlinelibrary.wiley.com/doi/10.1002/adhm.202402506" target="_blank">URL</a></div><div class="pcard-title">Dried Blood Matrix as a New Material for Detection of DNA Viruses</div><div class="pcard-authors"><strong>Jongwon Lim</strong>, Hwang, J., Min, H., Wester, M., Kim, C., Valera, E., Kong, J., &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Blood diagnostics</span></div></div>
+    <div class="pcard" data-tags="blood" data-year="2024"><div class="pcard-top"><div class="pcard-journal">Small</div><a class="pcard-url" href="https://onlinelibrary.wiley.com/doi/10.1002/smll.202307959" target="_blank">URL</a></div><div class="pcard-title">A Blood Drying Process for DNA Amplification</div><div class="pcard-authors"><strong>Jongwon Lim</strong>, Zhou, S., Baek, J., Kim, A. Y., Valera, E., Sweedler, J., &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Blood diagnostics</span></div></div>
+    <div class="pcard" data-tags="blood microfluidic" data-year="2022"><div class="pcard-top"><div class="pcard-journal">PNAS</div><a class="pcard-url" href="https://www.pnas.org/doi/10.1073/pnas.2209607119" target="_blank">URL</a></div><div class="pcard-title">A Culture-free Biphasic Approach for Sensitive and Rapid Detection of Pathogens in Dried Whole Blood Matrix</div><div class="pcard-authors">Ganguli, A., *<strong>Jongwon Lim</strong>, *Mostafa, A., … &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Blood diagnostics</span><span class="ptag">Microfluidics</span></div></div>
+    <div class="pcard" data-tags="respiratory microfluidic" data-year="2022"><div class="pcard-top"><div class="pcard-journal">Lab on a Chip</div><a class="pcard-url" href="https://pubs.rsc.org/en/content/articlehtml/2022/lc/d2lc00021k" target="_blank">URL</a></div><div class="pcard-title">Microfluidic Point-Of-Care Device for Detection of Early Strains and B.1.1.7 Variant of SARS-CoV-2 Virus</div><div class="pcard-authors">*<strong>Jongwon Lim</strong>, *Stavins, R., Kindratenko, V., Baek, J., … &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Respiratory diagnostics</span><span class="ptag">Microfluidics</span></div></div>
+    <div class="pcard" data-tags="respiratory biosensor" data-year="2021"><div class="pcard-top"><div class="pcard-journal">ACS Sensors</div><a class="pcard-url" href="https://pubs.acs.org/doi/abs/10.1021/acssensors.1c01937" target="_blank">URL</a></div><div class="pcard-title">Detection of SARS-CoV-2 Virus Amplification Using a Crumpled Graphene Field-Effect Transistor Biosensor</div><div class="pcard-authors">*Park, I., *<strong>Jongwon Lim</strong>, You, S., Hwang, M. T., … &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Respiratory diagnostics</span><span class="ptag">Biosensor</span></div></div>
+    <div class="pcard" data-tags="respiratory" data-year="2021"><div class="pcard-top"><div class="pcard-journal">Analytical Chemistry</div><a class="pcard-url" href="https://pubs.acs.org/doi/10.1021/acs.analchem.1c00942" target="_blank">URL</a></div><div class="pcard-title">Reverse Transcription Loop-Mediated Isothermal Amplification Assay for Ultrasensitive Detection of SARS-CoV-2 in Saliva and Viral Transport Medium</div><div class="pcard-authors">Ganguli, A., Mostafa, A., Berger, J., <strong>Jongwon Lim</strong>, Araud, E., Baek, J., … &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Respiratory diagnostics</span></div></div>
+    <div class="pcard" data-tags="respiratory" data-year="2021"><div class="pcard-top"><div class="pcard-journal">ACS Nano</div><a class="pcard-url" href="https://pubs.acs.org/doi/full/10.1021/acsnano.1c02981" target="_blank">URL</a></div><div class="pcard-title">COVID-19 Point-of-Care Diagnostics: Present and Future</div><div class="pcard-authors">Valera, E., Jankelow, A., <strong>Jongwon Lim</strong>, … &amp; Bashir, R.</div><div class="pcard-tags"><span class="ptag">Respiratory diagnostics</span></div></div>
+    <div class="pcard" data-tags="biosensor" data-year="2020"><div class="pcard-top"><div class="pcard-journal">J. Physical Chemistry Letters</div><a class="pcard-url" href="https://pubs.acs.org/doi/abs/10.1021/acs.jpclett.0c01427" target="_blank">URL</a></div><div class="pcard-title">Variable Membrane Dielectric Polarization Characteristic in Individual Live Cells</div><div class="pcard-authors">*Park, I., *<strong>Jongwon Lim</strong>, *Kim, S. H., Choi, S., … &amp; Lee, S. W.</div><div class="pcard-tags"><span class="ptag">Biosensor</span></div></div>
+    <div class="pcard" data-tags="microfluidic biosensor" data-year="2018"><div class="pcard-top"><div class="pcard-journal">Sensors</div><a class="pcard-url" href="https://www.mdpi.com/1424-8220/18/10/3543" target="_blank">URL</a></div><div class="pcard-title">Non-linear Cellular Dielectrophoretic Behavior Characterization Using Dielectrophoretic Tweezers-based Force Spectroscopy</div><div class="pcard-authors">Choi, S., Ko, K., <strong>Jongwon Lim</strong>, Kim, S. H., … &amp; Lee, S. W.</div><div class="pcard-tags"><span class="ptag">Microfluidics</span><span class="ptag">Biosensor</span></div></div>
+  </div>
+
+  <!-- Rendered output -->
+  <div id="pub-render"></div>
+
+  <!-- Patents -->
+  <div class="section" style="margin-top:2.5rem;">
     <div class="section-title">Patents</div>
     <div class="section-line"></div>
     <div class="pub-item">
       <div class="pub-title">Dual-Blocked Split Activator Logic for Amplification-Free CRISPR Diagnostics</div>
-      <div class="pub-authors">Bashir, R., <strong>Lim, J.</strong></div>
+      <div class="pub-authors">Bashir, R., <strong>Jongwon Lim</strong></div>
       <div class="pub-journal-row"><span class="pub-year-badge">2025</span><span class="pub-journal">U.S. Provisional Patent App. No. 63/858,846</span></div>
     </div>
     <div class="pub-item">
       <div class="pub-title">Culture-free biphasic approach for rapid detection of pathogens from whole blood</div>
-      <div class="pub-authors">Bashir, R., Ganguli, A., <strong>Lim, J.</strong>, Mostafa, A., Valera, E., Wester, M., &amp; Berger, J.</div>
+      <div class="pub-authors">Bashir, R., Ganguli, A., <strong>Jongwon Lim</strong>, Mostafa, A., Valera, E., Wester, M., &amp; Berger, J.</div>
       <div class="pub-journal-row"><span class="pub-year-badge">2024</span><span class="pub-journal">U.S. Patent App. No. 18/372,576</span></div>
     </div>
   </div>
@@ -644,6 +647,99 @@
 <div class="footer">© 2026 Jongwon Lim · Broad Institute of MIT and Harvard · Last updated May 2026</div>
 
 <script>
+  function renderPubs(tag) {
+    const allCards = Array.from(document.querySelectorAll('#all-pub-cards .pcard'));
+    const filtered = tag === 'all' ? allCards : allCards.filter(c => c.dataset.tags.includes(tag));
+
+    // Group by year
+    const groups = {};
+    filtered.forEach(card => {
+      const y = card.dataset.year;
+      if (!groups[y]) groups[y] = [];
+      groups[y].push(card.outerHTML);
+    });
+
+    const years = Object.keys(groups).sort((a,b) => b - a);
+    const render = document.getElementById('pub-render');
+    render.innerHTML = years.map(y => `
+      <div class="pub-year-group">
+        <div class="pub-year-label">${y}</div>
+        <div class="pub-grid">${groups[y].join('')}</div>
+      </div>
+    `).join('');
+
+    if (filtered.length === 0) {
+      render.innerHTML = '<p style="color:var(--text-muted);font-size:14px;padding:1rem 0;">No publications found for this category.</p>';
+    }
+  }
+
+  function filterPubs(tag, el) {
+    document.querySelectorAll('.pftab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    renderPubs(tag);
+  }
+
+  // Semantic Scholar citation counts
+  async function fetchCitations() {
+    try {
+      const res = await fetch(
+        'https://api.semanticscholar.org/graph/v1/author/2109782883/papers?fields=title,citationCount,externalIds&limit=100'
+      );
+      const data = await res.json();
+      if (!data.data) return;
+
+      // Build a map: normalized title -> citationCount
+      const citMap = {};
+      data.data.forEach(p => {
+        const key = p.title.toLowerCase().replace(/\s+/g, ' ').trim().slice(0, 60);
+        citMap[key] = p.citationCount;
+      });
+
+      // Match against rendered cards
+      document.querySelectorAll('.pcard').forEach(card => {
+        const titleEl = card.querySelector('.pcard-title');
+        if (!titleEl) return;
+        const key = titleEl.textContent.toLowerCase().replace(/\s+/g, ' ').trim().slice(0, 60);
+
+        // Find best match
+        let best = null, bestScore = 0;
+        Object.keys(citMap).forEach(k => {
+          // Simple overlap: how many chars of key appear in k
+          const score = k.startsWith(key.slice(0, 40)) || key.startsWith(k.slice(0, 40)) ? 1 : 0;
+          if (score > bestScore) { bestScore = score; best = k; }
+        });
+
+        if (best !== null && bestScore > 0 && citMap[best] !== undefined) {
+          // Remove old badge if exists
+          const old = card.querySelector('.cite-badge');
+          if (old) old.remove();
+          const badge = document.createElement('span');
+          badge.className = 'cite-badge';
+          badge.title = 'Citations (Semantic Scholar)';
+          badge.textContent = '📖 ' + citMap[best];
+          const authorsEl = card.querySelector('.pcard-authors');
+          if (authorsEl) authorsEl.after(badge);
+        }
+      });
+    } catch(e) {
+      console.log('Citation fetch failed:', e);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderPubs('all');
+    fetchCitations();
+  });
+
+  // Re-fetch citations after filter (cards re-rendered)
+  const _origFilter = filterPubs;
+  function filterPubs(tag, el) {
+    document.querySelectorAll('.pftab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    renderPubs(tag);
+    fetchCitations();
+  }
+
   function showPage(id, el) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
